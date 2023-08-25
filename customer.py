@@ -1,9 +1,12 @@
+from functions import _validate_string
+
+
 class Customer():
     CUSTOMERS = []
 
     def __init__(self, new_given_name="defaultGivenName", new_family_name='defaultFamilyName'):
-        self._given_name = self._validate_string(new_given_name)
-        self._family_name = self._validate_string(new_family_name)
+        self._given_name = _validate_string(new_given_name)
+        self._family_name = _validate_string(new_family_name)
         self._full_name = None
         self.update_full_name()
         self._full_customer_details = {}
@@ -25,14 +28,6 @@ class Customer():
     @staticmethod
     def add_to_customers_list(full_customer):
         Customer.CUSTOMERS.append(full_customer)
-
-    @staticmethod
-    def _validate_string(value):
-        if isinstance(value, str):
-            return value
-        else:
-            print(f"Value must be a string not a {type(value)}")
-            return
 
     @property
     def family_name(self):
@@ -66,6 +61,6 @@ customer1 = Customer("mamamia", 'samatha')
 customer2 = Customer("john", 'Cena')
 customer3 = Customer("Mary", 'Martha')
 customer4 = Customer("Steve", 'Harvey')
-print(customer1.full_name)
-
-print(Customer.all_customers())
+# print(customer1.full_name)
+#
+# print(Customer.all_customers())
