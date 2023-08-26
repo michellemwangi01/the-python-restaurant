@@ -26,8 +26,8 @@ restaurant2.add_review([review3, review4, review5, review6])
 
 # -------------------------------------------------------------------
 customer1.add_review(restaurant3, 23)
-print(Review.REVIEWS)
-# print(customer1.reviews())
+print(customer2.customer_reviews_total)
+print(customer1.reviews())
 
 # -------------------------------------------------------------------
 # print(restaurant2.restaurant_reviews)

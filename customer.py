@@ -5,6 +5,7 @@ class Customer:
     CUSTOMERS = []
 
     def __init__(self, new_given_name="defaultGivenName", new_family_name='defaultFamilyName'):
+        self._customer_reviews_count = 0
         self._given_name = _validate_string(new_given_name)
         self._family_name = _validate_string(new_family_name)
         self._full_name = None
@@ -13,6 +14,12 @@ class Customer:
         self._reviewed_restaurants = []
         self.get_customer_details()
         self.add_to_customers_list(self._full_customer_details)
+
+    @property
+    def customer_reviews_total(self):
+        reviews = self.reviews()
+        review_count = len(reviews)
+        return f'Total reviews for {self._family_name} {self._given_name} is {review_count}.'
 
     def get_customer_details(self):
         self._full_customer_details = {
@@ -71,7 +78,6 @@ class Customer:
 
     def reviews(self):
         from review import Review
-        print(Review.REVIEWS)
         for review in Review.REVIEWS:
             if review['customer'] == self._full_name:
                 self._reviewed_restaurants.append(review)
@@ -79,5 +85,5 @@ class Customer:
 
     def add_review(self, restaurant, rating):
         from review import Review
-        new_review = Review(self, restaurant, rating)
-        print(new_review.customer)
+        Review(self, restaurant, rating)
+
