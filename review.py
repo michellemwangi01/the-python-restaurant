@@ -1,5 +1,3 @@
-from customer import customer1
-from restaurant import restaurant1
 from functions import _validate_int
 
 
@@ -13,6 +11,8 @@ class Review:
         self._review_details = {}
         self.get_review_details()
         self.update_reviews(self._review_details)
+
+
 
     def rating(self):
         return self._rating
@@ -29,18 +29,22 @@ class Review:
             }
         return self._review_details
 
-    def update_reviews(self,review):
+    def update_reviews(self, review):
         self.REVIEWS.append(review)
+
+
 
     @classmethod
     def all_reviews(cls):
         return cls.REVIEWS
 
+    @property
+    def customer(self):
+        return self._customer.get_customer_details()
 
+    @property
+    def restaurant(self):
+        return self._restaurant.name
 
-review1 = Review(customer1, restaurant1, 10)
-review1 = Review(customer1, restaurant1, 12)
-review1 = Review(customer1, restaurant1, 13)
-print(Review.all_reviews())
 
 

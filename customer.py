@@ -10,6 +10,7 @@ class Customer():
         self._full_name = None
         self.update_full_name()
         self._full_customer_details = {}
+        self._reviewed_restaurants = []
         self.get_customer_details()
         self.add_to_customers_list(self._full_customer_details)
 
@@ -36,7 +37,7 @@ class Customer():
     @family_name.setter
     def family_name(self, updated_family_name):
         if isinstance(updated_family_name, str):
-            self.family_name = updated_family_name
+            self._family_name = updated_family_name
             self.update_full_name()
 
     @property
@@ -56,11 +57,13 @@ class Customer():
     def update_full_name(self):
         self._full_name = f'{self._family_name.title()}, {self._given_name.title()}'
 
+    @property
+    def reviewed_restaurants(self):
+        return list(set(self._reviewed_restaurants))
 
-customer1 = Customer("mamamia", 'samatha')
-customer2 = Customer("john", 'Cena')
-customer3 = Customer("Mary", 'Martha')
-customer4 = Customer("Steve", 'Harvey')
-# print(customer1.full_name)
-#
-# print(Customer.all_customers())
+    def add_reviewed_restaurants(self):
+        from review import Review
+        for review in Review.REVIEWS:
+            if review['customer'] == self._full_name and review['restaurant'] not in self._reviewed_restaurants:
+                self._reviewed_restaurants.append(review['restaurant'])
+        return self._reviewed_restaurants

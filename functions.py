@@ -14,7 +14,5 @@ def _validate_int(value):
         return
 
 
-def none_checker(values_array):
-    for i in values_array:
-        if i is None:
-            return
+def all_reviews(cls):
+    return cls.REVIEWS
