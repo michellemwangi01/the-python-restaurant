@@ -1,7 +1,7 @@
 from functions import _validate_string
 
 
-class Customer():
+class Customer:
     CUSTOMERS = []
 
     def __init__(self, new_given_name="defaultGivenName", new_family_name='defaultFamilyName'):
@@ -61,9 +61,23 @@ class Customer():
     def reviewed_restaurants(self):
         return list(set(self._reviewed_restaurants))
 
-    def add_reviewed_restaurants(self):
+    @property
+    def reviewed_restaurants(self):
         from review import Review
         for review in Review.REVIEWS:
             if review['customer'] == self._full_name and review['restaurant'] not in self._reviewed_restaurants:
                 self._reviewed_restaurants.append(review['restaurant'])
         return self._reviewed_restaurants
+
+    def reviews(self):
+        from review import Review
+        print(Review.REVIEWS)
+        for review in Review.REVIEWS:
+            if review['customer'] == self._full_name:
+                self._reviewed_restaurants.append(review)
+        return self._reviewed_restaurants
+
+    def add_review(self, restaurant, rating):
+        from review import Review
+        new_review = Review(self, restaurant, rating)
+        print(new_review.customer)
