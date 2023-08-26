@@ -1,4 +1,6 @@
+import re
 from functions import _validate_string
+
 
 
 class Customer:
@@ -12,6 +14,7 @@ class Customer:
         self.update_full_name()
         self._full_customer_details = {}
         self._reviewed_restaurants = []
+        self._reviews = []
         self.get_customer_details()
         self.add_to_customers_list(self._full_customer_details)
 
@@ -74,7 +77,7 @@ class Customer:
         for review in Review.REVIEWS:
             if review['customer'] == self._full_name and review['restaurant'] not in self._reviewed_restaurants:
                 self._reviewed_restaurants.append(review['restaurant'])
-        return self._reviewed_restaurants
+        return f'{self._full_name} has reviewed these restaurants: {self._reviewed_restaurants}'
 
     def reviews(self):
         from review import Review
@@ -86,4 +89,11 @@ class Customer:
     def add_review(self, restaurant, rating):
         from review import Review
         Review(self, restaurant, rating)
+
+    @classmethod
+    def find_customer_by_full_name(self, search_term):
+        full_names = [customer['full_name'] for customer in Customer.CUSTOMERS]
+        pattern = re.escape(search_term)
+        matches = [item for item in full_names if re.search(pattern, item)]
+        return matches
 

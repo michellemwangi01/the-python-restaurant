@@ -12,8 +12,6 @@ class Review:
         self.get_review_details()
         self.update_reviews(self._review_details)
 
-
-
     def rating(self):
         return self._rating
 
@@ -32,8 +30,6 @@ class Review:
     def update_reviews(self, review):
         self.REVIEWS.append(review)
 
-
-
     @classmethod
     def all_reviews(cls):
         return cls.REVIEWS
@@ -45,6 +41,7 @@ class Review:
     @property
     def restaurant(self):
         return self._restaurant.name
+
 
 
 
