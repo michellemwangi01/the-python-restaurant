@@ -25,6 +25,6 @@ restaurant1.add_review([review1, review2])
 restaurant2.add_review([review3, review4, review5, review6])
 
 # -------------------------------------------------------------------
-# print(restaurant2.restaurant_reviews)
-# print(restaurant2.customers_with_reviews())
+print(restaurant2.restaurant_reviews)
+print(restaurant2.customers_with_reviews())
 print(customer2.add_reviewed_restaurants())
