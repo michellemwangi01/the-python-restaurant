@@ -39,3 +39,5 @@ customer1.add_review(restaurant3, 23)
 print(Customer.find_customer_by_full_name('john doe'))
 print(Customer.find_customer_by_given_name('john'))
 # print(Customer.find_customer_by_given_name(customer1.given_name))
+
+print(restaurant2.average_star_rating())

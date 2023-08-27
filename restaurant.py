@@ -30,3 +30,6 @@ class Restaurant:
         all_customers = [review['customer'] for review in all_reviews]
         return list(set(all_customers))
 
+    def average_star_rating(self):
+        ratings_total = sum([review['rating'] for review in self.restaurant_reviews])/len(self.restaurant_reviews)
+        return f'The average star rating for restaurant {self._name} is {ratings_total}.'
