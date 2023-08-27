@@ -91,14 +91,14 @@ class Customer:
 
     @classmethod
     def find_customer_by_full_name(cls, search_term):
-        full_names = [customer['full_name'] for customer in Customer.CUSTOMERS]
+        full_names = [f'{customer["given_name"]} {customer["family_name"]}' for customer in Customer.CUSTOMERS]
         pattern = re.escape(search_term)
-        matches = [item for item in full_names if re.search(pattern, item.lower())]
-        return matches
+        matches = [item for item in full_names if re.match(pattern, item.lower())]
+        return matches if len(matches) > 0 else f"No Record Found for '{search_term}'."
 
     @classmethod
     def find_customer_by_given_name(cls, search_term):
-        full_names = [customer['full_name'] for customer in Customer.CUSTOMERS]
+        given_names = [f'{customer["given_name"]} {customer["family_name"]}' for customer in Customer.CUSTOMERS]
         pattern = re.escape(search_term)
-        matches = [item for item in full_names if re.search(pattern, item)]
-        return matches
+        matches = [item for item in given_names if re.search(pattern, item.lower())]
+        return matches if len(matches) > 0 else f"No Record Found for '{search_term}'."

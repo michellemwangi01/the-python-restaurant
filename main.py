@@ -6,6 +6,7 @@ from review import Review
 customer1 = Customer("Mirah","Samirah")
 customer2 = Customer("Samantha","Mariah")
 customer3 = Customer("John","Doe")
+customer4 = Customer("John","Smith")
 
 # -------------------------------------------------------------------
 restaurant1 = Restaurant("Hibbs")
@@ -35,5 +36,6 @@ customer1.add_review(restaurant3, 23)
 # print(customer3.reviewed_restaurants)
 
 #---------------------------------------------------------------------
-print(Customer.find_customer_by_full_name('doe, john'))
+print(Customer.find_customer_by_full_name('john doe'))
+print(Customer.find_customer_by_given_name('john'))
 # print(Customer.find_customer_by_given_name(customer1.given_name))
