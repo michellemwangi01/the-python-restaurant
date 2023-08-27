@@ -35,4 +35,5 @@ customer1.add_review(restaurant3, 23)
 # print(customer3.reviewed_restaurants)
 
 #---------------------------------------------------------------------
-print(Customer.find_customer_by_name(customer1.full_name))
+print(Customer.find_customer_by_full_name('doe, john'))
+# print(Customer.find_customer_by_given_name(customer1.given_name))

@@ -2,7 +2,6 @@ import re
 from functions import _validate_string
 
 
-
 class Customer:
     CUSTOMERS = []
 
@@ -91,9 +90,15 @@ class Customer:
         Review(self, restaurant, rating)
 
     @classmethod
-    def find_customer_by_full_name(self, search_term):
+    def find_customer_by_full_name(cls, search_term):
+        full_names = [customer['full_name'] for customer in Customer.CUSTOMERS]
+        pattern = re.escape(search_term)
+        matches = [item for item in full_names if re.search(pattern, item.lower())]
+        return matches
+
+    @classmethod
+    def find_customer_by_given_name(cls, search_term):
         full_names = [customer['full_name'] for customer in Customer.CUSTOMERS]
         pattern = re.escape(search_term)
         matches = [item for item in full_names if re.search(pattern, item)]
         return matches
-
