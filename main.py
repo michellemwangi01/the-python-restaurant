@@ -41,10 +41,10 @@ print(f"List of '{restaurant1.name}' reviews({len(restaurant1.restaurant_reviews
 
 print("\n-------------------------------customer add_review()-------------------------------------")
 customer1.add_review(restaurant3, 23)
-print(customer1.reviews())
+print(f"Reviews by {customer1.full_name}:\n {customer1.reviews()}")
 
 print("\n-------------------------------restaurant restaurant_reviews()---------------------------")
-print(restaurant2.restaurant_reviews)
+print(f"{restaurant2.name}'s reviews:\n{restaurant2.restaurant_reviews}")
 
 print("\n-------------------------------restaurant customers reviews------------------------------")
 print(restaurant2.customers_with_reviews())
