@@ -21,7 +21,7 @@ This project consists of multiple Python modules (`customer.py`, `restaurant.py`
 ### 1. Clone the repository
 
 
-git clone git@github.com:michellemwangi01/the-python-restaurant.git
+git clone `git@github.com:michellemwangi01/the-python-restaurant.git`
 
 
 
